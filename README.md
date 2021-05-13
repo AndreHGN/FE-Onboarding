@@ -1,10 +1,10 @@
-#Qulture - Front-end Trail
+# Qulture - Front-end Trail
 
 ## Introdução:
 
 O projeto consiste em desenvolver uma página web com a lista de episódios da série de desenho animado "Rick and Morty".
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a1b7768-6c1c-496b-bee3-4bd0908e55a3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a1b7768-6c1c-496b-bee3-4bd0908e55a3/Untitled.png)
+![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9a1b7768-6c1c-496b-bee3-4bd0908e55a3%2FUntitled.png?table=block&id=92b7b042-a136-4d52-9862-42602912ff2c&width=960&userId=44c2a06d-0366-4ff8-96e1-0b79f280f724&cache=v2)
 
 Ao longo da trilha, você irá aprender/relembrar/aprofundar em alguns temas e já por em prática para fixar melhor o conhecimento! Só fazer leitura é bem chato né?
 
