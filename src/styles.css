@@ -43,11 +43,11 @@ body {
     margin-bottom: 20px;
 }
 
-.quantity-container {
+.general-info-container {
     margin-bottom: 20px;
 }
 
-.line-container {
+.container-line {
     border: 1px solid var(--lightblue);
 }
 
@@ -85,11 +85,11 @@ body {
     margin-bottom: 20px;
 }
 
-.characters {
+h4 {
     margin-top: 20px;
 }
 
-.char-list {
+.characters {
     display: flex;
     flex-direction: row;
 }
@@ -97,4 +97,9 @@ body {
 ul {
     margin-left: 25px;
     width: 25%;
+}
+
+.error {
+    margin: 20px auto 0px auto;
+
 }

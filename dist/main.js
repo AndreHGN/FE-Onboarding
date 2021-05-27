@@ -315,6 +315,17 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 
 /***/ }),
 
+/***/ "./src/getEpisodes.js":
+/*!****************************!*\
+  !*** ./src/getEpisodes.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getEpisodes);\n\n// FUNCTION TO GET THE EPISODES FROM THE DATABASE\nfunction getEpisodes() {\n\n    return axios__WEBPACK_IMPORTED_MODULE_0___default()({\n        method: 'post',\n        url: 'https://rickandmortyapi.com/graphql',\n        data: {\n        query:`query EpisodesResults{\n            episodes {\n                results{\n                    id\n                    name\n                    air_date\n                    episode\n                    characters {\n                        id\n                        name\n                    }\n                  }\n            }\n            }`\n        }\n    });\n    \n}\n\n  \n\n//# sourceURL=webpack://webpack-demo/./src/getEpisodes.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -322,7 +333,62 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n\n// Quantity of episodes\nlet total = document.createTextNode(\"41\");\nlet listed = document.createTextNode(\"1\");\n\n\n// Information about the episode (to be displayed in the card)\nlet epEnumeration = \"S01E01\";\nlet epTitle = \"Piloto\";\nlet epAirDate = \"02/12/2013\";\nlet epCharacters = [\"Rick Sanches\", \"Morty Smith\", \"Beth Smith\", \"Jerry Smith\", \"Summer Smith\",\n                    \"Jessica\", \"Mr. Goldenfold\", \"Frank Palincky\", \"Davin\", \"Glenn\"];\n\n\n// FUNCTION THAT TAKES THE EPISODE'S INFO AND MAKES A CARD OUT OF IT\nfunction makeCard() {\n\n  // creating the Card div\n  const Card = document.createElement('div')\n  Card.className = \"card\";\n\n  // creating the Name-Date div\n  const NameDate = document.createElement('div');\n  NameDate.className = \"name-date\";\n\n  // creating the Line hr\n  const Line = document.createElement('hr');\n  Line.className = \"line-card\";\n\n  // creating the Characters div\n  const Characters = document.createElement('div');\n  Characters.className = \"characters\";\n\n  // creating the list of characters div\n  const CharList = document.createElement('div');\n  CharList.className = \"char-list\";\n\n  // inserting the episode's enumeration, title and air date\n  NameDate.innerHTML = `<h2>${epEnumeration} - ${epTitle}</h2>\n                        <p>${epAirDate}</p>`;\n\n  // inserting characters in the list\n  Characters.innerHTML = `<h4>Personagens: </h4>`;\n  for (let i = 0; i < (epCharacters.length/5); i++) {\n    let Ul = document.createElement('ul');\n    for (let j = 0; j < 5 && (5*i + j) < epCharacters.length; j++) {\n      let index = 5*i + j;\n      Ul.innerHTML += `<li>${epCharacters[index]}</li>`;\n    }\n    CharList.appendChild(Ul);\n  }\n\n  // inserting each set of list in the Characters div\n  Characters.appendChild(CharList);\n  \n  // inserting all divs in the Card\n  Card.appendChild(NameDate);\n  Card.appendChild(Line);\n  Card.appendChild(Characters);\n\n  return Card;\n\n}\n\n\n// FUNCTION THAT PRINTS AN ERROR IF THE REQUEST FAILS\nfunction printError(error) {\n  console.log(\"Deu ruim: \", error);\n}\n\n\n// FUNCTION THAT PRINTS THE RESPONSE\nfunction printResponse(response) {\n  var episodes = response.data.data.episodes.results\n  console.log(episodes);\n}\n\n\n// FUNCTION TO GET THE EPISODES FROM THE DATABASE\nfunction getEpisodes() {\n  \n  axios__WEBPACK_IMPORTED_MODULE_1___default()({\n    method: 'post',\n    url: 'https://rickandmortyapi.com/graphql',\n    data: {\n      query:`query EpisodesResults{\n          episodes {\n            results {\n              id\n              name\n              air_date\n              episode\n              characters {\n                id\n                name\n              }\n            }\n          }\n        }`\n    }\n  }).then(printResponse).catch(printError);\n\n}\n\n\ngetEpisodes();\n\n\n// Insert the quantity of episodes (total and listed)\ndocument.getElementById(\"total-quantity\").append(total);\ndocument.getElementById(\"listed-quantity\").append(listed); \n\n\n// Get the grid container from the document and insert a card inside of it\nconst GridContainer = document.getElementsByClassName(\"grid-container\");\nGridContainer.item(0).appendChild(makeCard());\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _printResponse__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./printResponse */ \"./src/printResponse.js\");\n/* harmony import */ var _printError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./printError */ \"./src/printError.js\");\n/* harmony import */ var _getEpisodes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getEpisodes.js */ \"./src/getEpisodes.js\");\n/* harmony import */ var _renderData_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./renderData.js */ \"./src/renderData.js\");\n\n\n\n\n\n\n\n// Mock information\nconst episode = {\n  enumeration: \"S01E01\",\n  title: \"Piloto\",\n  airDate: \"02/12/2013\",\n  characters: [\"Rick Sanches\", \"Morty Smith\", \"Beth Smith\", \"Jerry Smith\", \"Summer Smith\",\n               \"Jessica\", \"Mr. Goldenfold\", \"Frank Palincky\", \"Davin\", \"Glenn\"],\n  totalOfEpisodes: 41,\n  episodesListed: 1\n}\n\n\n// Get the episodes from the database and prints it on the console\n;(0,_getEpisodes_js__WEBPACK_IMPORTED_MODULE_3__.default)().then(_printResponse__WEBPACK_IMPORTED_MODULE_1__.default).catch(_printError__WEBPACK_IMPORTED_MODULE_2__.default);\n\n\n// Render the episode's information\n(0,_renderData_js__WEBPACK_IMPORTED_MODULE_4__.default)(episode);\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/makeCard.js":
+/*!*************************!*\
+  !*** ./src/makeCard.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (makeCard);\n\nfunction makeCard(episode) {\n\n    const card = document.createElement('div')\n    card.className = \"card\";\n  \n    const nameDateDiv = document.createElement('div');\n    nameDateDiv.className = \"name-date\";\n  \n    const cardLine = document.createElement('hr');\n    cardLine.className = \"line-card\";\n\n    const charactersTitle = document.createElement('h4');\n    charactersTitle.innerHTML = \"Personagens: \";\n  \n    const charactersDiv = document.createElement('div');\n    charactersDiv.className = \"characters\";\n  \n    // inserting the episode's enumeration, title and air date\n    nameDateDiv.innerHTML = `<h2>${episode.enumeration} - ${episode.title}</h2>\n                             <p>${episode.airDate}</p>`;\n    \n    // inserting characters in the list\n    let listContent = \"\";\n    episode.characters.forEach( (character, index, array) => {\n\n        listContent += `<li>${character}</li>`;\n        \n        // separates the characters in sets of 5\n        if ((index != 0 && (index+1)%5 == 0) || index == array.length-1) {\n            const characterList = document.createElement('ul');\n            characterList.innerHTML = listContent;\n            charactersDiv.appendChild(characterList);\n            listContent = \"\";\n        }\n\n    });\n    \n    // inserting all elements required in the Card\n    card.appendChild(nameDateDiv);\n    card.appendChild(cardLine);\n    card.appendChild(charactersTitle);\n    card.appendChild(charactersDiv);\n  \n    return card;\n  \n}\n\n//# sourceURL=webpack://webpack-demo/./src/makeCard.js?");
+
+/***/ }),
+
+/***/ "./src/makeGeneralInfoDiv.js":
+/*!***********************************!*\
+  !*** ./src/makeGeneralInfoDiv.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (makeGeneralInfoDiv);\n\nfunction makeGeneralInfoDiv(episode) {\n\n    const generalInfoDiv = document.createElement('div');\n    generalInfoDiv.className = \"general-info-container\";\n\n    const listed = document.createElement('p');\n    listed.innerHTML = `Quantidade de episódios listados: ${episode.episodesListed}`;\n\n    const total = document.createElement('p');\n    total.innerHTML = `Total de episódios: ${episode.totalOfEpisodes}`;\n\n    generalInfoDiv.appendChild(listed);\n    generalInfoDiv.appendChild(total);\n\n    return generalInfoDiv;\n\n}\n\n//# sourceURL=webpack://webpack-demo/./src/makeGeneralInfoDiv.js?");
+
+/***/ }),
+
+/***/ "./src/printError.js":
+/*!***************************!*\
+  !*** ./src/printError.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (printError);\n\n// FUNCTION THAT PRINTS AN ERROR IF THE REQUEST FAILS\nfunction printError(error) {\n\n    const errorMessage = `<h2 class=\"error\">${error}</h2>`;\n\n    const gridContainer = document.getElementsByClassName(\"grid-container\").item(0);\n    gridContainer.style.display = \"flex\";\n    gridContainer.innerHTML = errorMessage;\n\n}\n\n//# sourceURL=webpack://webpack-demo/./src/printError.js?");
+
+/***/ }),
+
+/***/ "./src/printResponse.js":
+/*!******************************!*\
+  !*** ./src/printResponse.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (printResponse);\n\n// FUNCTION THAT PRINTS THE RESPONSE FROM A REQUEST\nfunction printResponse(response) {\n\n    const episodes = response.data.data.episodes.results\n    console.log(episodes);\n\n}\n\n//# sourceURL=webpack://webpack-demo/./src/printResponse.js?");
+
+/***/ }),
+
+/***/ "./src/renderData.js":
+/*!***************************!*\
+  !*** ./src/renderData.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _makeGeneralInfoDiv_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./makeGeneralInfoDiv.js */ \"./src/makeGeneralInfoDiv.js\");\n/* harmony import */ var _makeCard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./makeCard.js */ \"./src/makeCard.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderData);\n\nfunction renderData(episode) {\n\n    // Get the container div and insert the general information in the middle (before the line)\n    const bodyContainerDiv = document.getElementsByClassName(\"container\").item(0);\n    const containerLine = document.getElementsByClassName(\"container-line\").item(0);\n    bodyContainerDiv.insertBefore((0,_makeGeneralInfoDiv_js__WEBPACK_IMPORTED_MODULE_0__.default)(episode), containerLine);\n\n    // Get the grid container from the document and insert a card inside of it\n    const gridContainer = document.getElementsByClassName(\"grid-container\").item(0);\n    gridContainer.appendChild((0,_makeCard_js__WEBPACK_IMPORTED_MODULE_1__.default)(episode));\n\n}\n\n//# sourceURL=webpack://webpack-demo/./src/renderData.js?");
 
 /***/ })
 
