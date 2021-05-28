@@ -6,10 +6,10 @@ function makeGeneralInfoDiv(episodes) {
     generalInfoDiv.className = "general-info-container";
 
     const listed = document.createElement('p');
-    listed.innerHTML = `Quantidade de episódios listados: ${episodes.results.length}`;
+    listed.innerHTML = `Quantity of listed episodes: ${episodes.results.length}`;
 
     const total = document.createElement('p');
-    total.innerHTML = `Total de episódios: ${episodes.info.count}`;
+    total.innerHTML = `Total of episodes: ${episodes.info.count}`;
 
     generalInfoDiv.appendChild(listed);
     generalInfoDiv.appendChild(total);

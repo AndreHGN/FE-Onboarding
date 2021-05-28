@@ -12,7 +12,7 @@ function makeCard(episode) {
     cardLine.className = "line-card";
 
     const charactersTitle = document.createElement('h4');
-    charactersTitle.innerHTML = "Personagens: ";
+    charactersTitle.innerHTML = "Characters: ";
   
     const charactersDiv = document.createElement('div');
     charactersDiv.className = "characters";
@@ -25,7 +25,7 @@ function makeCard(episode) {
     nameDateDiv.innerHTML = `<h2>${episode.episode} - ${episode.name}</h2>
                              <p>${episode.air_date}</p>`;
     
-                             
+
     episode.characters.forEach( (character, index) => {
         
         if (index%2 == 0) {
