@@ -7,6 +7,7 @@ function printError(error) {
 
     const gridContainer = document.getElementsByClassName("grid-container").item(0);
     gridContainer.style.display = "flex";
+    gridContainer.style.justifyContent = "center";
     gridContainer.innerHTML = errorMessage;
 
 }

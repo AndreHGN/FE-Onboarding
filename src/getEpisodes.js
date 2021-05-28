@@ -10,6 +10,9 @@ function getEpisodes() {
         data: {
         query:`query EpisodesResults{
             episodes {
+                info {
+                    count
+                }
                 results{
                     id
                     name
@@ -24,7 +27,7 @@ function getEpisodes() {
             }`
         }
     });
-    
+
 }
 
   
