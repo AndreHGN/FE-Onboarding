@@ -28,13 +28,9 @@ function makeCard(episode) {
 
     episode.characters.forEach( (character, index) => {
         
-        if (index%2 == 0) {
-            characterListEven.innerHTML += `<li>${character.name}</li>`; 
-        }
-        else {
-            characterListOdd.innerHTML += `<li>${character.name}</li>`
-        }
-
+        const correctList = index % 2 === 0 ? characterListEven : characterListOdd;
+        correctList.innerHTML += `<li>${character.name}</li>`; 
+        
     });
 
     charactersDiv.appendChild(characterListEven);

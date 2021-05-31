@@ -3,21 +3,33 @@ import makeCard from './makeCard.js';
 
 export default renderData;
 
-function renderData(response) {
+const bodyContainerDiv = document.getElementsByClassName("container").item(0);
+const gridContainer = document.getElementsByClassName("grid-container").item(0);
 
-    const episodes = response.data.data.episodes;
+function renderData(episodes) {
+
+    const generalInfo = {
+        listedEpisodes: episodes.results.length,
+        totalEpisodes: episodes.info.count
+    };
 
     // Render the general information 
-    const bodyContainerDiv = document.getElementsByClassName("container").item(0);
     const containerLine = document.getElementsByClassName("container-line").item(0);
-    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(episodes), containerLine);
+    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(generalInfo), containerLine);
 
     // Render each episode card
-    const gridContainer = document.getElementsByClassName("grid-container").item(0);
-    episodes.results.forEach( episode => {
-        
-        gridContainer.appendChild(makeCard(episode));
+    episodes.results.forEach( episode => gridContainer.appendChild(makeCard(episode)));
 
-    });
+}
 
+export function renderLoader() {
+    const loader = document.createElement('div');
+    loader.className = "loader";
+
+    bodyContainerDiv.insertBefore(loader, gridContainer);
+}
+
+export function removeLoader() {
+    const loader = document.getElementsByClassName("loader").item(0);
+    loader.remove();
 }

@@ -1,15 +1,15 @@
 export default makeGeneralInfoDiv;
 
-function makeGeneralInfoDiv(episodes) {
+function makeGeneralInfoDiv(generalInfo) {
 
     const generalInfoDiv = document.createElement('div');
     generalInfoDiv.className = "general-info-container";
 
     const listed = document.createElement('p');
-    listed.innerHTML = `Quantity of listed episodes: ${episodes.results.length}`;
+    listed.innerHTML = `Listed episodes: ${generalInfo.listedEpisodes}`;
 
     const total = document.createElement('p');
-    total.innerHTML = `Total of episodes: ${episodes.info.count}`;
+    total.innerHTML = `Total of episodes: ${generalInfo.totalEpisodes}`;
 
     generalInfoDiv.appendChild(listed);
     generalInfoDiv.appendChild(total);

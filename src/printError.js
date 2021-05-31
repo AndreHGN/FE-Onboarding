@@ -1,13 +1,14 @@
 export default printError;
 
-// FUNCTION THAT PRINTS AN ERROR IF THE REQUEST FAILS
 function printError(error) {
 
-    const errorMessage = `<h2 class="error">${error}</h2>`;
+    const errorMessage = document.createElement('h2');
+    errorMessage.className = "error";
+    errorMessage.innerHTML = `${error}`;
 
+    const bodyContainerDiv = document.getElementsByClassName("container").item(0);
     const gridContainer = document.getElementsByClassName("grid-container").item(0);
-    gridContainer.style.display = "flex";
-    gridContainer.style.justifyContent = "center";
-    gridContainer.innerHTML = errorMessage;
+    
+    bodyContainerDiv.insertBefore(errorMessage, gridContainer);
 
 }
