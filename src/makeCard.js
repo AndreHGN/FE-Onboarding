@@ -1,5 +1,9 @@
 export default makeCard;
 
+function isEven(number) {
+    return number % 2 === 0 ? true : false; 
+}
+
 function makeCard(episode) {
 
     const card = document.createElement('div')
@@ -12,32 +16,29 @@ function makeCard(episode) {
     cardLine.className = "line-card";
 
     const charactersTitle = document.createElement('h4');
-    charactersTitle.innerHTML = "Personagens: ";
+    charactersTitle.innerHTML = "Characters: ";
   
     const charactersDiv = document.createElement('div');
     charactersDiv.className = "characters";
   
-    // inserting the episode's enumeration, title and air date
-    nameDateDiv.innerHTML = `<h2>${episode.enumeration} - ${episode.title}</h2>
-                             <p>${episode.airDate}</p>`;
+    const characterListEven = document.createElement('ul');
     
-    // inserting characters in the list
-    let listContent = "";
-    episode.characters.forEach( (character, index, array) => {
+    const characterListOdd = document.createElement('ul');
 
-        listContent += `<li>${character}</li>`;
+
+    nameDateDiv.innerHTML = `<h2>${episode.episode} - ${episode.name}</h2><p>${episode.air_date}</p>`;
+    
+
+    episode.characters.forEach( (character, index) => {
         
-        // separates the characters in sets of 5
-        if ((index != 0 && (index+1)%5 == 0) || index == array.length-1) {
-            const characterList = document.createElement('ul');
-            characterList.innerHTML = listContent;
-            charactersDiv.appendChild(characterList);
-            listContent = "";
-        }
-
+        const correctList = isEven(index) ? characterListEven : characterListOdd;
+        correctList.innerHTML += `<li>${character.name}</li>`; 
+        
     });
-    
-    // inserting all elements required in the Card
+
+    charactersDiv.appendChild(characterListEven);
+    charactersDiv.appendChild(characterListOdd);
+
     card.appendChild(nameDateDiv);
     card.appendChild(cardLine);
     card.appendChild(charactersTitle);
