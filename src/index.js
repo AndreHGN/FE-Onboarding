@@ -8,12 +8,18 @@ async function main() {
     
     renderLoader();
     
-    const response = await getEpisodes().catch(error => error);
+    try {
+        const response = await getEpisodes();
+        const episodes = response.data.data.episodes;
+        renderData(episodes);
+    }
+    catch(error) {
+        printError(error.message);
+    }
+    finally{
+        removeLoader();
+    }
     
-    removeLoader();
-    const episodes = response.data ? response.data.data.episodes : null;
-
-    episodes ? renderData(episodes) : printError(response);
 }
 
 main();

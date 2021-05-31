@@ -1,5 +1,9 @@
 export default makeCard;
 
+function isEven(number) {
+    return number % 2 === 0 ? true : false; 
+}
+
 function makeCard(episode) {
 
     const card = document.createElement('div')
@@ -22,13 +26,12 @@ function makeCard(episode) {
     const characterListOdd = document.createElement('ul');
 
 
-    nameDateDiv.innerHTML = `<h2>${episode.episode} - ${episode.name}</h2>
-                             <p>${episode.air_date}</p>`;
+    nameDateDiv.innerHTML = `<h2>${episode.episode} - ${episode.name}</h2><p>${episode.air_date}</p>`;
     
 
     episode.characters.forEach( (character, index) => {
         
-        const correctList = index % 2 === 0 ? characterListEven : characterListOdd;
+        const correctList = isEven(index) ? characterListEven : characterListOdd;
         correctList.innerHTML += `<li>${character.name}</li>`; 
         
     });

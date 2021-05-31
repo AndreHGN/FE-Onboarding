@@ -73,7 +73,7 @@ body {
     0% { transform: rotate(0deg); }
     50% { box-shadow: 0 0 20px var(--green); }
     100% { transform: rotate(360deg); }
-  }
+}
 
 .card {
     border-radius: 8px;
