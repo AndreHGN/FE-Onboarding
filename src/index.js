@@ -1,25 +1,19 @@
 import _ from 'lodash';
-import printError from './printError';
 import getEpisodes from './getEpisodes.js';
-import renderData from './renderData.js';
-import { renderLoader, removeLoader } from './renderData.js';
+import setupPagination from './setupPagination.js';
+import { renderData, renderPagination } from './renderElements.js';
 
-async function main() {
-    
-    renderLoader();
-    
-    try {
-        const response = await getEpisodes();
-        const episodes = response.data.data.episodes;
-        renderData(episodes);
-    }
-    catch(error) {
-        printError(error.message);
-    }
-    finally{
-        removeLoader();
-    }
+async function initialize() {
+
+    const initialPage = 1;
+    const episodes = await getEpisodes(initialPage);
+    const maxPage = episodes.info.pages;
+
+    renderData(episodes);
+    renderPagination(initialPage, maxPage);
+    setupPagination(initialPage, maxPage);
     
 }
 
-main();
+
+initialize();
