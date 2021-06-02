@@ -1,9 +1,12 @@
 import makeGeneralInfoDiv from './makeGeneralInfoDiv.js';
 import makeCard from './makeCard.js';
-import makePageButtons from './makePageButtons.js'
+import makePageNumericButtons from './makePageNumericButtons.js'
 
 const bodyContainerDiv = document.getElementsByClassName("container").item(0);
 const gridContainer = document.getElementsByClassName("grid-container").item(0);
+
+const [paginationDivTop, paginationDivBottom] = document.getElementsByClassName("pagination");
+const [nextPageButtonTop, nextPageButtonBottom] = document.getElementsByClassName("next");
 
 export function renderData(episodes) {
 
@@ -28,21 +31,21 @@ export function renderLoader() {
     bodyContainerDiv.insertBefore(loader, gridContainer);
 }
 
+export function renderSmallLoader() {
+    const smallLoader = document.createElement('div');
+    smallLoader.className = "small-loader";
+
+    paginationDivTop.insertBefore(smallLoader, nextPageButtonTop);
+    paginationDivBottom.insertBefore(smallLoader.cloneNode(true), nextPageButtonBottom);
+}
+
 export function renderPagination(currentPage, maxPage) {
 
-    const pageButtonsTop = makePageButtons(currentPage, maxPage);
-    const pageButtonsBottom = makePageButtons(currentPage, maxPage);
+    const pageNumericButtons = makePageNumericButtons(currentPage, maxPage);
 
-    const paginationDivs = document.getElementsByClassName("pagination");
-    const nextPageButtons = document.getElementsByClassName("next");
-
-
-    pageButtonsTop.forEach(button => {
-        paginationDivs.item(0).insertBefore(button, nextPageButtons.item(0));
-    });
-
-    pageButtonsBottom.forEach(button => {
-        paginationDivs.item(1).insertBefore(button, nextPageButtons.item(1));
+    pageNumericButtons.forEach(button => {
+        paginationDivTop.insertBefore(button, nextPageButtonTop);
+        paginationDivBottom.insertBefore(button.cloneNode(true), nextPageButtonBottom);
     });
 
 }

@@ -12,7 +12,12 @@ export function removeLoader() {
     loader.remove();
 }
 
+export function removeSmallLoader() {
+    const smallLoaders = document.getElementsByClassName("small-loader");
+    Array.from(smallLoaders).forEach(smallLoader => smallLoader.remove());
+}
+
 export function removePagination() {
-    const pageButtons = document.getElementsByClassName("number");
-    Array.from(pageButtons).forEach(button => button.remove());
+    const pageNumericButtons = document.getElementsByClassName("number");
+    Array.from(pageNumericButtons).forEach(button => button.remove());
 }

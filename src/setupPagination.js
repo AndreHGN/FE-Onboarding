@@ -11,42 +11,38 @@ function updateSelectedButton(currentPage) {
 }
 
 function goToNextPage(currentPage, maxPage) {
-    return function() {
-        if (currentPage !== maxPage) {
-            currentPage += 1;
-            updateData(currentPage);
-            updateSelectedButton(currentPage);
-        }
-    }
-}
-
-function goToPrevPage(currentPage) {
-    return function() {
-        if (currentPage !== 1) {
-            currentPage -= 1;
-            updateData(currentPage);
-            updateSelectedButton(currentPage);
-        }
-    }
-}
-
-function goToPageNumber(currentPage) {
-    return function() {
-        currentPage = parseInt(this.innerHTML);
+    if (currentPage !== maxPage) {
+        currentPage += 1;
         updateData(currentPage);
         updateSelectedButton(currentPage);
     }
+    else alert("There are no following pages!")
+}
+
+function goToPrevPage(currentPage) {
+    if (currentPage !== 1) {
+        currentPage -= 1;
+        updateData(currentPage);
+        updateSelectedButton(currentPage);
+    }
+    else alert("There are no previous pages")
+}
+
+function goToPageNumber(pageNumber) {
+    const currentPage = pageNumber;
+    updateData(currentPage);
+    updateSelectedButton(currentPage);
 }
 
 function setupPagination(currentPage, maxPage) {
 
     const nextPageButton = document.getElementsByClassName("next");
-    Array.from(nextPageButton).forEach(button => button.onclick = goToNextPage(currentPage, maxPage));
+    Array.from(nextPageButton).forEach(button => button.onclick = () => {goToNextPage(currentPage, maxPage)});
     
     const prevPageButton = document.getElementsByClassName("previous");
-    Array.from(prevPageButton).forEach(button => button.onclick = goToPrevPage(currentPage));
+    Array.from(prevPageButton).forEach(button => button.onclick = () => {goToPrevPage(currentPage)});
     
-    const pageNumberButton = document.getElementsByClassName("number");
-    Array.from(pageNumberButton).forEach(button => button.onclick = goToPageNumber(currentPage));
+    const pageNumbericButton = document.getElementsByClassName("number");
+    Array.from(pageNumbericButton).forEach((button, index) => button.onclick = () => {goToPageNumber(index+1)});
 
 }
