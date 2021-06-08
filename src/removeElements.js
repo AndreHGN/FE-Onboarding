@@ -1,23 +1,28 @@
 
 export function removeData() {
     const generalInfoDiv = document.getElementsByClassName("general-info-container").item(0);
-    generalInfoDiv.remove();
+    if (generalInfoDiv) generalInfoDiv.remove();
 
     const cards = document.getElementsByClassName("card");
-    Array.from(cards).forEach(card => card.remove());
+    if (cards) Array.from(cards).forEach(card => card.remove());
 }
 
 export function removeLoader() {
     const loader = document.getElementsByClassName("loader").item(0);
-    loader.remove();
+    if (loader) loader.remove();
 }
 
 export function removeSmallLoader() {
     const smallLoaders = document.getElementsByClassName("small-loader");
-    Array.from(smallLoaders).forEach(smallLoader => smallLoader.remove());
+    if (smallLoaders) Array.from(smallLoaders).forEach(smallLoader => smallLoader.remove());
 }
 
 export function removePagination() {
     const pageNumericButtons = document.getElementsByClassName("number");
-    Array.from(pageNumericButtons).forEach(button => button.remove());
+    if (pageNumericButtons) Array.from(pageNumericButtons).forEach(button => button.remove());
+}
+
+export function removeError() {
+    const errorMessage = document.getElementsByClassName("error").item(0);
+    if (errorMessage) errorMessage.remove();
 }

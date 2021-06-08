@@ -16,8 +16,8 @@ export function renderData(episodes) {
     };
 
     // Render the general information 
-    const paginationDiv = document.getElementsByClassName("pagination").item(0);
-    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(generalInfo), paginationDiv);
+    const filterDiv = document.getElementsByClassName("filter-container").item(0);
+    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(generalInfo), filterDiv);
 
     // Render each episode card
     episodes.results.forEach( episode => gridContainer.appendChild(makeCard(episode)));
@@ -49,3 +49,4 @@ export function renderPagination(currentPage, maxPage) {
     });
 
 }
+

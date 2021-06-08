@@ -43,8 +43,17 @@ body {
     margin-bottom: 20px;
 }
 
-.general-info-container {
-    margin-bottom: 20px;
+.filter-name {
+    padding: 4px;
+    border-radius: 4px;
+    border: 2px solid var(--darkblue);
+    color: var(--darkblue);
+    background-color: var(--lightblue);
+    transition: 0.3s;
+}
+
+.filter-name::placeholder {
+    color: #0a2130be;
 }
 
 .pagination {
@@ -52,7 +61,7 @@ body {
     justify-content: center;
 }
 
-.page {
+.page, .filter-button{
     cursor: pointer;
     width: 50px;
     padding: 5px;
@@ -63,7 +72,11 @@ body {
     background-color: var(--darkblue);
     font-size: 12px;
     font-weight: bold;
-    transition: 0.2s;
+    transition: 0.3s;
+}
+
+.filter-button {
+    margin: 20px 2px 0px;
 }
 
 .next, .previous {
@@ -75,7 +88,7 @@ body {
     background-color: var(--lightblue);
 }
 
-.page:hover {
+.page:hover, .filter-button:hover, .filter-name:hover {
     box-shadow: 0 0 4px var(--green);
     border: 2px solid var(--green);
     color: var(--darkblue);
