@@ -47,12 +47,49 @@ body {
     margin-bottom: 20px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    cursor: pointer;
+    width: 50px;
+    padding: 5px;
+    margin: 20px 2px;
+    border-radius: 16px;
+    border: 2px solid var(--lightblue);
+    color: var(--lightblue);
+    background-color: var(--darkblue);
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.next, .previous {
+    width: 100px;
+}
+
+.selected {
+    color: var(--darkblue);
+    background-color: var(--lightblue);
+}
+
+.page:hover {
+    box-shadow: 0 0 4px var(--green);
+    border: 2px solid var(--green);
+    color: var(--darkblue);
+    background-color: var(--lightblue);
+}
+
+
 .container-line {
     border: 1px solid var(--lightblue);
 }
 
 .grid-container {
     display: grid;
+    margin : 20px 0px;
     text-align: left;
     grid-template-columns: repeat(2, 48%);
     column-gap: 4%;
@@ -75,9 +112,54 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+.small-loader {
+    margin: auto 32px;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--lightblue);
+    color: var(--lightblue);
+    animation: dotFlashing .4s infinite linear alternate;
+    animation-delay: .2s;
+}
+  
+.small-loader::before, .small-loader::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+  
+.small-loader::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--lightblue);
+    color: var(--lightblue);
+    animation: dotFlashing .4s infinite alternate;
+    animation-delay: 0s;
+}
+  
+.small-loader::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--lightblue);
+    color: var(--lightblue);
+    animation: dotFlashing .4s infinite alternate;
+    animation-delay: .4s;
+}
+  
+@keyframes dotFlashing {
+    0% { background-color: var(--lightblue); }
+    100% { background-color: var(--darkblue); }
+} 
+
 .card {
     border-radius: 8px;
-    margin-top: 20px;
     color: var(--darkblue);
     text-align: justify;
     border: 2px solid var(--darkblue);

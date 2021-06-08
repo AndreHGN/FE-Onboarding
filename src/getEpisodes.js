@@ -1,16 +1,21 @@
 import axios from 'axios';
+import printError from './printError';
+import {renderLoader} from './renderElements';
+import {removeLoader} from './removeElements';
+
 export default getEpisodes;
 
-function getEpisodes() {
+async function getEpisodes(currentPage) {
 
-    return axios({
+    const response = await axios({
         method: 'post',
         url: 'https://rickandmortyapi.com/graphql',
         data: {
             query:`query EpisodesResults{
-                    episodes {
+                    episodes (page: ${currentPage}) {
                         info{
                             count
+                            pages
                         }
                         results{
                             id
@@ -26,6 +31,7 @@ function getEpisodes() {
                 }`
         }
     });
+    return response.data.data.episodes;
 
 }
 
