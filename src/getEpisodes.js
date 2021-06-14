@@ -1,8 +1,7 @@
 import axios from 'axios';
-
 export default getEpisodes;
 
-async function getEpisodes(currentPage, filterName) {
+async function getEpisodes(currentPage, filterName, cancelToken) {
 
     const response = await axios({
         method: 'post',
@@ -26,8 +25,10 @@ async function getEpisodes(currentPage, filterName) {
                         }
                     }
                 }`
-        }
+        },
+        cancelToken: cancelToken
     });
+
     return response.data.data.episodes;
 
 }

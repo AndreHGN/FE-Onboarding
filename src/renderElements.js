@@ -31,12 +31,15 @@ export function renderLoader() {
     bodyContainerDiv.insertBefore(loader, gridContainer);
 }
 
-export function renderSmallLoader() {
-    const smallLoader = document.createElement('div');
-    smallLoader.className = "small-loader";
+export function renderSmallLoaders() {
+    const smallLoaderTop = document.createElement('div');
+    smallLoaderTop.className = "small-loader top";
 
-    paginationDivTop.insertBefore(smallLoader, nextPageButtonTop);
-    paginationDivBottom.insertBefore(smallLoader.cloneNode(true), nextPageButtonBottom);
+    const smallLoaderBottom = document.createElement('div');
+    smallLoaderBottom.className = "small-loader bottom";
+
+    paginationDivTop.insertBefore(smallLoaderTop, nextPageButtonTop);
+    paginationDivBottom.insertBefore(smallLoaderBottom, nextPageButtonBottom);
 }
 
 export function renderPagination(currentPage, maxPage) {
