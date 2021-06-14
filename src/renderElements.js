@@ -16,8 +16,8 @@ export function renderData(episodes) {
     };
 
     // Render the general information 
-    const paginationDiv = document.getElementsByClassName("pagination").item(0);
-    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(generalInfo), paginationDiv);
+    const filterDiv = document.getElementsByClassName("filter-container").item(0);
+    bodyContainerDiv.insertBefore(makeGeneralInfoDiv(generalInfo), filterDiv);
 
     // Render each episode card
     episodes.results.forEach( episode => gridContainer.appendChild(makeCard(episode)));
@@ -31,12 +31,15 @@ export function renderLoader() {
     bodyContainerDiv.insertBefore(loader, gridContainer);
 }
 
-export function renderSmallLoader() {
-    const smallLoader = document.createElement('div');
-    smallLoader.className = "small-loader";
+export function renderSmallLoaders() {
+    const smallLoaderTop = document.createElement('div');
+    smallLoaderTop.className = "small-loader top";
 
-    paginationDivTop.insertBefore(smallLoader, nextPageButtonTop);
-    paginationDivBottom.insertBefore(smallLoader.cloneNode(true), nextPageButtonBottom);
+    const smallLoaderBottom = document.createElement('div');
+    smallLoaderBottom.className = "small-loader bottom";
+
+    paginationDivTop.insertBefore(smallLoaderTop, nextPageButtonTop);
+    paginationDivBottom.insertBefore(smallLoaderBottom, nextPageButtonBottom);
 }
 
 export function renderPagination(currentPage, maxPage) {
@@ -49,3 +52,4 @@ export function renderPagination(currentPage, maxPage) {
     });
 
 }
+
